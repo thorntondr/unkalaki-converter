@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unkalaki Name Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        input, button {
+            font-size: 1.2em;
+            margin: 10px 0;
+            padding: 5px;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Unkalaki Name Converter</h1>
+    <label for="inputName">Enter your name:</label><br>
+    <input type="text" id="inputName" placeholder="Type your name here"><br>
+    <button onclick="convertName()">Convert to Unkalaki</button>
+    <div id="output"></div>
+
+    <script>
+        const conversionChart = {
+            A: "ti", B: "nu", C: "u", D: "li", E: "ki", F: "ka", G: "fah'", H: "ho", I: "ki'",
+            J: "ka'", K: "al", L: "mi", M: "kai", N: "ma", O: "na", P: "i'", Q: "kai'", R: "lu",
+            S: "ku", T: "tu", U: "na'", V: "a", W: "li'", X: "ai", Y: "tai", Z: "mu",
+            CH: "la", CK: "mor", NG: "tai", PH: "to", QU: "ma'", SH: "ta", TH: "hu", WH: "ak'", ZH: "nu'"
+        };
+
+        function convertName() {
+            const input = document.getElementById("inputName").value.toUpperCase();
+            let unkalakiName = "";
+
+            for (let i = 0; i < input.length; i++) {
+                const doubleChar = input.substring(i, i + 2); // Check for 2-character combinations
+                if (conversionChart[doubleChar]) {
+                    unkalakiName += conversionChart[doubleChar] + "'";
+                    i++; // Skip the next character as it was part of the combination
+                } else if (conversionChart[input[i]]) {
+                    unkalakiName += conversionChart[input[i]] + "'";
+                } else if (input[i] === " ") {
+                    unkalakiName += " "; // Preserve spaces
+                }
+            }
+
+            document.getElementById("output").innerText = "Unkalaki Name: " + unkalakiName.slice(0, -1);
+        }
+    </script>
+</body>
+</html>
