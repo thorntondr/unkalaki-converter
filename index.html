@@ -35,7 +35,7 @@
             A: "ti", B: "nu", C: "u", D: "li", E: "ki", F: "ka", G: "fah'", H: "ho", I: "ki'",
             J: "ka'", K: "al", L: "mi", M: "kai", N: "ma", O: "na", P: "i'", Q: "kai'", R: "lu",
             S: "ku", T: "tu", U: "na'", V: "a", W: "li'", X: "ai", Y: "tai", Z: "mu",
-            CH: "la", CK: "mor", NG: "tai", PH: "to", QU: "ma'", SH: "ta", TH: "hu", WH: "ak'", ZH: "nu'"
+            CH: "la", CK: "mor", NG: "ma", PH: "to", SH: "ta", TH: "hu", WH: "ak'", ZH: "nu'"
         };
 
         function convertName() {
@@ -45,16 +45,14 @@
             for (let i = 0; i < input.length; i++) {
                 const doubleChar = input.substring(i, i + 2); // Check for 2-character combinations
                 if (conversionChart[doubleChar]) {
-                    unkalakiName += conversionChart[doubleChar] + "'";
+                    unkalakiName += conversionChart[doubleChar];
                     i++; // Skip the next character as it was part of the combination
                 } else if (conversionChart[input[i]]) {
-                    unkalakiName += conversionChart[input[i]] + "'";
-                } else if (input[i] === " ") {
-                    unkalakiName += " "; // Preserve spaces
+                    unkalakiName += conversionChart[input[i]];
                 }
             }
 
-            document.getElementById("output").innerText = "Unkalaki Name: " + unkalakiName.slice(0, -1);
+            document.getElementById("output").innerText = "Unkalaki Name: " + unkalakiName;
         }
     </script>
 </body>
