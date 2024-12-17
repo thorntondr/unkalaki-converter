@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,33 +10,59 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+
         h1 {
             text-align: center;
         }
-        input, button {
+
+        input,
+        button {
             font-size: 1.2em;
             margin: 10px 0;
             padding: 5px;
         }
+
         #output {
             margin-top: 20px;
             font-size: 1.2em;
         }
     </style>
 </head>
+
 <body>
     <h1>Unkalaki Name Converter</h1>
-    <label for="inputName">Enter your name:</label><br>
-    <input type="text" id="inputName" placeholder="Type your name here"><br>
-    <button onclick="convertName()">Convert to Unkalaki</button>
-    <div id="output"></div>
+
+    <div>
+        <label for="inputName">Your name:</label><br>
+        <input type="text" id="inputName" value="Rock"><br>
+        <button onclick="convertName()">Convert</button>
+    </div>
+    <br>
+    <div>
+        <label for="output">Your Unkalaki Name:</label><br>
+        <div id="output">Lunamor</div>
+    </div>
+    <br>
+    <div>
+        Some things you can try:
+        <li>First name</li>
+        <li>Nickname</li>
+        <li>First name Last name</li>
+        <li>Last name, First name</li>
+    </div>
+    <br>
+    <div>
+        How it works:
+        <br>
+        <img src="table.png">
+    </div>
 
     <script>
         const conversionChart = {
             A: "ti", B: "nu", C: "u", D: "li", E: "ki", F: "ka", G: "fah'", H: "ho", I: "ki'",
             J: "ka'", K: "al", L: "mi", M: "kai", N: "ma", O: "na", P: "i'", Q: "kai'", R: "lu",
             S: "ku", T: "tu", U: "na'", V: "a", W: "li'", X: "ai", Y: "tai", Z: "mu",
-            CH: "la", CK: "mor", NG: "ma", PH: "to", SH: "ta", TH: "hu", WH: "ak'", ZH: "nu'"
+            CH: "la", CK: "mor", NG: "tal", PH: "to", QU: "ma'", SH: "ta", TH: "hu", WH: "ak'", ZH: "nu'"
         };
 
         function convertName() {
@@ -52,15 +79,16 @@
                 }
             }
 
-            document.getElementById("output").innerText = "Unkalaki Name: " + unkalakiName.charAt(0).toUpperCase() + unkalakiName.slice(1);
+            document.getElementById("output").value = unkalakiName.charAt(0).toUpperCase() + unkalakiName.slice(1);
         }
-        
+
         // Add event listener for "Enter" key press
-        document.getElementById("inputName").addEventListener("keypress", function(event) {
+        document.getElementById("inputName").addEventListener("keypress", function (event) {
             if (event.key === "Enter") {
                 event.preventDefault(); // Prevent form submission or default behavior
                 convertName();
             }
         });    </script>
 </body>
+
 </html>
