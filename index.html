@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unkalaki Name Converter</title>
+    <title>Unkalaki Name Maker</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,17 +30,17 @@
 </head>
 
 <body>
-    <h1>Unkalaki Name Converter</h1>
+    <h1>Unkalaki Name Maker</h1>
 
     <div>
-        <label for="inputName">Your name:</label><br>
-        <input type="text" id="inputName" value="Rock"><br>
-        <button onclick="convertName()">Convert</button>
+        <!-- <label for="inputName">Your name:</label><br> -->
+        <input type="text" id="inputName" placeholder="Enter your name"><br>
+        <button onclick="convertName()">Get your Unkalaki name</button>
     </div>
     <br>
     <div>
-        <label for="output">Your Unkalaki Name:</label><br>
-        <div id="output">Lunamor</div>
+        <label for="output">Your Unkalaki Name:</label>
+        <div id="output"></div>
     </div>
     <br>
     <div>
@@ -79,7 +79,7 @@
                 }
             }
 
-            document.getElementById("output").value = unkalakiName.charAt(0).toUpperCase() + unkalakiName.slice(1);
+            document.getElementById("output").innerText = unkalakiName.charAt(0).toUpperCase() + unkalakiName.slice(1);
         }
 
         // Add event listener for "Enter" key press
